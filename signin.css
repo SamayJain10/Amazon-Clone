@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.signin-logo{
+    height: 64px;
+    width: 256px;
+    position: relative;
+    top: -300px;
+    left: 184px;
+    text-align: center;
+
+}
+
+.signin-container {
+    background: #ffffff;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.13);
+    width: 320px;
+    text-align: center;
+    position: relative;
+    top: -90px;
+    left: -129px;
+}
+
+h1 {
+    font-size: 18px;
+    color: #000000;
+}
+
+form {
+    margin-top: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #ffa41c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #ec9a1c;
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+footer a {
+    color: #0066c0;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    color: #767676;
+    margin-top: 10px;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+}

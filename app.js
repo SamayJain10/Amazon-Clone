@@ -87,13 +87,59 @@ cross.addEventListener("click", () => {
 });
 
 // Handling user menu visibility toggle
-const sign = document.querySelector(".ac");
-const tri = document.querySelector(".triangle");
-const signin = document.querySelector(".user-menu");
+document.addEventListener('DOMContentLoaded', function() {
+    const signInButton = document.querySelector('.ac');  
+    const triangleButton = document.querySelector('.triangle');  
+    const userMenu = document.querySelector('.user-menu');
+    const blackOverlay = document.querySelector('.black');
 
-sign.addEventListener("click", () => {
-    black.classList.toggle("active-1");
-    signin.classList.toggle("active");
-    tri.classList.toggle("active");
-    document.body.classList.toggle("stop-scroll");
+    // Function to toggle the visibility of the user menu
+    function toggleUserMenu() {
+        userMenu.classList.toggle('active');
+        triangleButton.classList.toggle('active');
+        blackOverlay.classList.toggle('active-1');
+        document.body.classList.toggle('stop-scroll');
+    }
+
+    // Check if elements exist to avoid errors
+    if (signInButton && userMenu && triangleButton && blackOverlay) {
+        signInButton.addEventListener('click', toggleUserMenu);
+        triangleButton.addEventListener('click', toggleUserMenu);
+    } else {
+        console.error('One or more interactive elements are missing!');
+    }
+
+    // Add event listener for clicking outside the user menu to close it
+    document.addEventListener('click', function(event) {
+        if (!userMenu.contains(event.target) && !signInButton.contains(event.target) && !triangleButton.contains(event.target)) {
+            userMenu.classList.remove('active');
+            triangleButton.classList.remove('active');
+            blackOverlay.classList.remove('active-1');
+            document.body.classList.remove('stop-scroll');
+        }
+    });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Select all <li> elements
+    const listItems = document.querySelectorAll('li');
+
+    // Set tabindex="0" for each <li> element
+    listItems.forEach(item => {
+        item.setAttribute('tabindex', '0');
+    });
+});
+
+// Add keydown event listener to all elements that have tabindex="0"
+document.addEventListener('DOMContentLoaded', () => {
+    const focusableElements = document.querySelectorAll('[tabindex="0"]');
+
+    focusableElements.forEach(elem => {
+        elem.addEventListener('keydown', function(event) {
+            if (event.key === "Enter" || event.keyCode === 13) {
+                this.click();
+            }
+        });
+    });
+});
+
