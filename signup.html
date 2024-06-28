@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In</title>
+    <title>Sign Up</title>
     <link rel="stylesheet" href="account.css">
     <link rel="icon" type="image/x-icon" href="images/amazon.svg">
 </head>
@@ -12,16 +12,25 @@
     <div class="signin-logo">
         <img src="images/amazon.jpeg" style="height: 64px; width: 160px;">
     </div>
-    <div class="signin-container">
+    <div class="signup-container">
         <h1>Sign in or create account</h1>
 
-        <form action="/submit-your-form-handler" method="POST" id="signinForm">
+        <form action="/submit-your-signup-handler" method="POST" id="signupForm">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+
             <label for="emailOrPhone">Enter mobile number or email</label>
             <input type="text" id="emailOrPhone" name="emailOrPhone" placeholder="Email or Phone Number" 
                    pattern="(\w+@\w+\.\w+)|(\d{10})" title="Enter a valid email or 10-digit phone number" required>
-            <button type="submit"><a href="index.html" style="color: white; text-decoration-line: none;">Continue</a></button>
-            <p class="error-message" style="display:none; color:red;">Please enter a valid email or 10-digit phone number.</p>
-            <p>New Customer ? <a href="signup.html" style="color: rgb(84 84 84); text-decoration-line: none;">Sign Up here!</a></p>
+
+            <label for="password">Password</label><br>
+            <input type="password" id="password" name="password" placeholder="Password" required
+                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).{8,}" 
+                   title="Must contain at least one number, one uppercase and lowercase letter, one special character, and at least 8 or more characters">
+
+            <button type="submit">Continue</button>
+            <p class="error-message" style="display:none; color:red;">Please enter valid information.</p>
+            <p>Already have an account? <a href="signin.html" style="color: rgb(84 84 84); text-decoration-line: none;">Sign In here!</a></p>
         </form>
         
         <footer>

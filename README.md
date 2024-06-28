@@ -16,9 +16,13 @@ This is a clone of the Amazon website, built using HTML, CSS, and JavaScript. Th
 
 6) Slider: A slider for showcasing featured products, highlighting popular and recommended items.
 
-7) Secondary Content: A secondary content section featuring product slides, providing users with additional product information and recommendations.
+7) Secondary Content: A secondary content section featuring product slides, providing users with additional product information and               recommendations.
 
 8) Footer: A footer section with links to various Amazon pages, including Help, About, and more, as well as a copyright notice.
+
+9) Signin Page: Allows user to signin into their accounts.
+
+10) Signup Page: Allows user to register their account.
 
 ## Getting Started
 

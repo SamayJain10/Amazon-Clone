@@ -26,7 +26,18 @@ body {
     text-align: center;
     position: relative;
     top: -90px;
-    left: -129px;
+    left: -126px;
+}
+
+.signup-container {
+    background: #ffffff;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.13);
+    width: 320px;
+    text-align: center;
+    position: relative;
+    top: -18px;
+    left: -126px;
 }
 
 h1 {
@@ -39,6 +50,15 @@ form {
 }
 
 input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="password"] {
     width: 100%;
     padding: 8px;
     margin: 10px 0;

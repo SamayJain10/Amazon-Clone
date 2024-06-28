@@ -5,15 +5,15 @@ const rightBtn = document.querySelector(".r-btn");
 // Add event listener for right button click to scroll product slides to the right
 rightBtn.addEventListener("click", function(event) {
     const content = document.querySelector(".product-slide");
-    content.scrollLeft += 1100; // Scroll right by 1100 pixels
-    event.preventDefault(); // Prevent default action (e.g., link navigation)
+    content.scrollLeft += 1100; 
+    event.preventDefault(); 
 });
 
 // Add event listener for left button click to scroll product slides to the left
 leftBtn.addEventListener("click", function(event) {
     const content = document.querySelector(".product-slide");
-    content.scrollLeft -= 1100; // Scroll left by 1100 pixels
-    event.preventDefault(); // Prevent default action
+    content.scrollLeft -= 1100; 
+    event.preventDefault(); 
 });
 
 // Additional buttons for other sets of product slides
@@ -57,7 +57,7 @@ const backtop = document.querySelector(".backtop");
 backtop.addEventListener("click", () => {
     window.scrollTo({
         top: 0,
-        behavior: "smooth" // Smooth scroll to top
+        behavior: "smooth" 
     });
 });
 
@@ -73,17 +73,17 @@ cross.style.display = 'none';
 // Event listener to open the sidebar
 sidebtn.addEventListener("click", () => {
     sidebar.classList.add("active");
-    cross.style.display = 'block'; // Show close button
+    cross.style.display = 'block'; 
     black.classList.add("active");
-    document.body.classList.add("stop-scroll"); // Stop scrolling on the body
+    document.body.style.overflow = 'hidden'; 
 });
 
 // Event listener to close the sidebar
 cross.addEventListener("click", () => {
     sidebar.classList.remove("active");
-    cross.style.display = 'none'; // Hide close button
+    cross.style.display = 'none'; 
     black.classList.remove("active");
-    document.body.classList.remove("stop-scroll"); // Resume scrolling on the body
+    document.body.style.overflow = ''; 
 });
 
 // Handling user menu visibility toggle
