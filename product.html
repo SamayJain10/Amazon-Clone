@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="product.css">
+    <link rel="stylesheet" href="style.css">
     <title>Apple Watch Series 9</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/x-icon" href="images/amazon.svg">
 </head>
 <body>
@@ -75,7 +77,7 @@
     <header>
         <div class="header">
             <div class="flex logo">
-            <a href="index.html"><img src="images/logo.png" alt=""></a>
+            <a href="#"><img src="images/logo.png" alt=""></a>
             <div class="map flex" tabindex="0">
                 <i class="fas fa-map-marker"></i>
                 <div>
@@ -137,14 +139,18 @@
     </header>
 
     <main class="product-container">
+        <div class="thumbnail-container">
+            <img class="thumbnail" src="images/watch.jpg" alt="Thumbnail 1" data-main-image-src="images/watch.jpg">
+            <img class="thumbnail" src="images/watch1.jpeg" alt="Thumbnail 1" data-main-image-src="images/watch1.jpeg">
+            <img class="thumbnail" src="images/watch2.jpeg" alt="Thumbnail 2" data-main-image-src="images/watch2.jpeg">
+            <img class="thumbnail" src="images/watch3.jpg" alt="Thumbnail 3" data-main-image-src="images/watch3.jpg">
+        </div>
         <div class="image-gallery">
-            <div class="thumbnail-container">
-                <img class="thumbnail" src="images/watch.jpg" alt="Thumbnail 1" data-main-image-src="images/watch.jpg">
-                <img class="thumbnail" src="images/watch1.jpeg" alt="Thumbnail 1" data-main-image-src="images/watch1.jpeg">
-                <img class="thumbnail" src="images/watch2.jpeg" alt="Thumbnail 2" data-main-image-src="images/watch2.jpeg">
-                <img class="thumbnail" src="images/watch3.jpg" alt="Thumbnail 3" data-main-image-src="images/watch3.jpg">
+            <div class="main-image-container">
+                <img id="main-image" src="images/watch.jpg" alt="Apple Watch Series 9" class="active-image">
+                <div class="zoom-lens"></div>
             </div>
-            <img id="main-image" src="images/watch.jpg" alt="Apple Watch Series 9" class="active-image">            
+            <div class="zoom-result" id="zoom-result"></div>           
         </div>
 
         <div class="product-details">
@@ -155,8 +161,33 @@
             <p>EMI starts at ₹2,177. No Cost EMI available</p>
             <div class="offers">
                 <p>Bank Offer: Upto ₹1,750.00 discount on select Credit Cards</p>
-                <p>No Cost EMI: Upto ₹2,021.81 EMI interest savings on Amazon Pay ICICI...</p>
+                <p>No Cost EMI: Upto ₹2,021.81 EMI interest savings on Amazon Pay ICICI Bank Credit Card</p>
             </div><hr><br>
+
+            <div class="color-palette">
+                <div class="color-option selected" data-color="Midnight">
+                    <div class="color-circle" style="background-color: #1C1C1C;"></div>
+                    <p>Midnight</p>
+                </div>
+                <div class="color-option" data-color="Pink">
+                    <div class="color-circle" style="background-color: #FFC0CB;"></div>
+                    <p>Pink</p>
+                </div>
+                <div class="color-option" data-color="Blue">
+                    <div class="color-circle" style="background-color: #0000FF;"></div>
+                    <p>Blue</p>
+                </div>
+                <div class="color-option" data-color="Red">
+                    <div class="color-circle" style="background-color: red;"></div>
+                    <p>Red</p>
+                </div>
+                <div class="color-option" data-color="Orange">
+                    <div class="color-circle" style="background-color: orange;"></div>
+                    <p>Orange</p>
+                </div>
+            </div>
+            <br>
+
             <div class="product-details">
                 <h4>Operating System</h4><p class="details">Watch OS </p>
                 <h4>Memory Storage Capacity</h4><p class="details"> 64 GB</p>
@@ -176,7 +207,7 @@
             </ul>
             <br><hr><br>    
             </div>
-            <button class="buy-now">Buy Now</button>
+            <a href="address.html"><button class="buy-now">Buy Now</button></a>
             <button class="add-to-cart">Add to Cart</button>
         </div>
     </main>
