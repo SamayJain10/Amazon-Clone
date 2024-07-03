@@ -10,7 +10,8 @@
 </head>
 <body>
 
-
+    <script src="address.js"></script>
+    
     <header>
         <div class="header">
             <div class="flex logo">
@@ -87,10 +88,12 @@
             </select>
             
             <label for="fullName">Full name (First and Last name)</label>
-            <input type="text" id="fullName" name="fullName" pattern="[A-Za-z\s]+" required>
+            <input type="text" id="fullName" name="fullName" required>
+            <div class="error-message" id="nameError"></div>
             
             <label for="mobileNumber">Mobile number</label>
-            <input type="text" id="mobileNumber" name="mobileNumber" pattern="\d{10}" required>
+            <input type="text" id="mobileNumber" name="mobileNumber" required>
+            <div class="error-message" id="mobileError"></div>
             
             <label for="addressLine1">Flat, House no., Building, Company, Apartment</label>
             <input type="text" id="addressLine1" name="addressLine1" required>
@@ -147,6 +150,7 @@
 
             <label for="pincode">Pincode</label>
             <input type="text" id="pincode" name="pincode" required>
+            <div class="error-message" id="pincodeError"></div>
             
             <div class="default-address">
                 <input type="checkbox" id="defaultAddress" name="defaultAddress">
@@ -225,8 +229,6 @@
             <span><a href="https://github.com/SamayJain10">Amazon Clone by Samay Jain</a></span>
         </div>
     </section>
-
-    <script src="address.js"></script>
 
 </body>
 </html>

@@ -7,15 +7,6 @@
     list-style: none;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    box-sizing: border-box;
-    list-style: none;
-}
-
 body{
     width: 100%;
     box-sizing: border-box;
@@ -31,6 +22,11 @@ body{
     margin: 0;
 }
 
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
 
 .form-container {
     background-color: white;
@@ -59,34 +55,6 @@ body{
     font-size: 16px;
     margin: 0;
     text-align: center;
-}
-
-.close-button {
-    background: none;
-    border: 1px solid #666;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    font-size: 18px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.autofill-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-.autofill-button {
-    background-color: #e7f3ff;
-    border: 1px solid #d1e9ff;
-    color: #0073bb;
-    padding: 10px;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 form {

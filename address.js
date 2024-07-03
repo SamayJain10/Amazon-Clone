@@ -1,31 +1,41 @@
-document.getElementById('addressForm').addEventListener('submit', function(event) {
-    var fullName = document.getElementById('fullName').value;
-    var mobileNumber = document.getElementById('mobileNumber').value;
-    var pincode = document.getElementById('pincode').value;
-    
-    var namePattern = /^[A-Za-z\s]+$/;
-    var mobilePattern = /^\d{10}$/;
-    var pincodePattern = /^\d{6}$/;
-    
-    document.getElementById('nameError').textContent = '';
-    document.getElementById('mobileError').textContent = '';
-    document.getElementById('pincodeError').textContent = '';
+document.addEventListener('DOMContentLoaded', function() {
+    var form = document.getElementById('addressForm');
+    var fullName = document.getElementById('fullName');
+    var mobileNumber = document.getElementById('mobileNumber');
+    var pincode = document.getElementById('pincode');
 
-    if (!namePattern.test(fullName)) {
-        alert('Full name can only contain alphabets.');
-        event.preventDefault();
+    function validateField(field, pattern, errorElement, errorMessage) {
+        if (!pattern.test(field.value.trim())) {
+            errorElement.textContent = errorMessage;
+            return false;
+        } else {
+            errorElement.textContent = '';
+            return true;
+        }
     }
-    
-    if (!mobilePattern.test(mobileNumber)) {
-        alert('Mobile number must be 10 digits.');
-        event.preventDefault();
-    }
-    
-    if (!pincodePattern.test(pincode)) {
-        alert('Pincode must be 6 digits.');
-        event.preventDefault();
-    }
+
+    form.addEventListener('submit', function(event) {
+        var isValid = true; // Assume form is valid unless proven otherwise
+
+        // Detailed validation for each field
+        if (!validateField(fullName, /^[A-Za-z\s]+$/, document.getElementById('nameError'), 'Full name can only contain alphabets and spaces.')) {
+            isValid = false;
+        }
+
+        if (!validateField(mobileNumber, /^\d{10}$/, document.getElementById('mobileError'), 'Mobile number must be exactly 10 digits.')) {
+            isValid = false;
+        }
+
+        if (!validateField(pincode, /^\d{6}$/, document.getElementById('pincodeError'), 'Pincode must be exactly 6 digits.')) {
+            isValid = false;
+        }
+
+        if (!isValid) {
+            event.preventDefault(); // Prevent form submission if validation fails
+        }
+    });
 });
+
 
 
 const backtop = document.querySelector(".backtop");
