@@ -4,38 +4,62 @@ document.addEventListener('DOMContentLoaded', function() {
     var mobileNumber = document.getElementById('mobileNumber');
     var pincode = document.getElementById('pincode');
 
-    function validateField(field, pattern, errorElement, errorMessage) {
-        if (!pattern.test(field.value.trim())) {
-            errorElement.textContent = errorMessage;
+    var nameError = document.getElementById('nameError');
+    var mobileError = document.getElementById('mobileError');
+    var pincodeError = document.getElementById('pincodeError');
+
+    var namePattern = /^[A-Za-z\s]+$/;
+    var mobilePattern = /^\d{10}$/;
+    var pincodePattern = /^\d{6}$/;
+
+    function validateFullName() {
+        if (!namePattern.test(fullName.value.trim())) {
+            nameError.textContent = 'Full name can only contain alphabets and spaces.';
             return false;
         } else {
-            errorElement.textContent = '';
+            nameError.textContent = '';
             return true;
         }
     }
 
+    function validateMobileNumber() {
+        if (!mobilePattern.test(mobileNumber.value.trim())) {
+            mobileError.textContent = 'Mobile number must be exactly 10 digits.';
+            return false;
+        } else {
+            mobileError.textContent = '';
+            return true;
+        }
+    }
+
+    function validatePincode() {
+        if (!pincodePattern.test(pincode.value.trim())) {
+            pincodeError.textContent = 'Pincode must be exactly 6 digits.';
+            return false;
+        } else {
+            pincodeError.textContent = '';
+            return true;
+        }
+    }
+
+    function validateForm() {
+        var isFullNameValid = validateFullName();
+        var isMobileNumberValid = validateMobileNumber();
+        var isPincodeValid = validatePincode();
+
+        return isFullNameValid && isMobileNumberValid && isPincodeValid;
+    }
+
+    fullName.addEventListener('input', validateFullName);
+    mobileNumber.addEventListener('input', validateMobileNumber);
+    pincode.addEventListener('input', validatePincode);
+
     form.addEventListener('submit', function(event) {
-        var isValid = true; // Assume form is valid unless proven otherwise
-
-        // Detailed validation for each field
-        if (!validateField(fullName, /^[A-Za-z\s]+$/, document.getElementById('nameError'), 'Full name can only contain alphabets and spaces.')) {
-            isValid = false;
-        }
-
-        if (!validateField(mobileNumber, /^\d{10}$/, document.getElementById('mobileError'), 'Mobile number must be exactly 10 digits.')) {
-            isValid = false;
-        }
-
-        if (!validateField(pincode, /^\d{6}$/, document.getElementById('pincodeError'), 'Pincode must be exactly 6 digits.')) {
-            isValid = false;
-        }
-
-        if (!isValid) {
-            event.preventDefault(); // Prevent form submission if validation fails
+        if (!validateForm()) {
+            event.preventDefault();
         }
     });
 });
-
 
 
 const backtop = document.querySelector(".backtop");
