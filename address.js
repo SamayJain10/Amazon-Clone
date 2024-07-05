@@ -1,43 +1,37 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var form = document.getElementById('addressForm');
-    var fullName = document.getElementById('fullName');
-    var mobileNumber = document.getElementById('mobileNumber');
-    var pincode = document.getElementById('pincode');
-
-    var nameError = document.getElementById('nameError');
-    var mobileError = document.getElementById('mobileError');
-    var pincodeError = document.getElementById('pincodeError');
-
+$(document).ready(function() {
     var namePattern = /^[A-Za-z\s]+$/;
     var mobilePattern = /^\d{10}$/;
     var pincodePattern = /^\d{6}$/;
 
     function validateFullName() {
-        if (!namePattern.test(fullName.value.trim())) {
-            nameError.textContent = 'Full name can only contain alphabets and spaces.';
+        var fullName = $('#fullName').val().trim();
+        if (!namePattern.test(fullName)) {
+            $('#nameError').text('Full name can only contain alphabets and spaces.');
             return false;
         } else {
-            nameError.textContent = '';
+            $('#nameError').text('');
             return true;
         }
     }
 
     function validateMobileNumber() {
-        if (!mobilePattern.test(mobileNumber.value.trim())) {
-            mobileError.textContent = 'Mobile number must be exactly 10 digits.';
+        var mobileNumber = $('#mobileNumber').val().trim();
+        if (!mobilePattern.test(mobileNumber)) {
+            $('#mobileError').text('Mobile number must be exactly 10 digits.');
             return false;
         } else {
-            mobileError.textContent = '';
+            $('#mobileError').text('');
             return true;
         }
     }
 
     function validatePincode() {
-        if (!pincodePattern.test(pincode.value.trim())) {
-            pincodeError.textContent = 'Pincode must be exactly 6 digits.';
+        var pincode = $('#pincode').val().trim();
+        if (!pincodePattern.test(pincode)) {
+            $('#pincodeError').text('Pincode must be exactly 6 digits.');
             return false;
         } else {
-            pincodeError.textContent = '';
+            $('#pincodeError').text('');
             return true;
         }
     }
@@ -50,48 +44,39 @@ document.addEventListener('DOMContentLoaded', function() {
         return isFullNameValid && isMobileNumberValid && isPincodeValid;
     }
 
-    fullName.addEventListener('input', validateFullName);
-    mobileNumber.addEventListener('input', validateMobileNumber);
-    pincode.addEventListener('input', validatePincode);
+    $('#fullName').on('input', validateFullName);
+    $('#mobileNumber').on('input', validateMobileNumber);
+    $('#pincode').on('input', validatePincode);
 
-    form.addEventListener('submit', function(event) {
+    $('form').on('submit', function(event) {
         if (!validateForm()) {
             event.preventDefault();
         }
     });
-});
 
-
-const backtop = document.querySelector(".backtop");
-backtop.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth" 
+    // Back to top functionality
+    $('.backtop').click(function() {
+        $('html, body').animate({ scrollTop: 0 }, 'smooth');
     });
+
+    $(document).ready(function() {
+        // Explicitly hide the xmark when the document is ready
+        $('.fa-xmark').hide();
+    
+        // Sidebar toggle functionality
+        $('.nav-1 div').click(function() {
+            $('.sidebar').toggleClass('active');
+            $('.fa-xmark').toggle(); // Toggle visibility of the xmark
+            $('.black').toggleClass('active');
+            $('body').toggleClass('stop-scroll');
+        });
+    
+        // Close sidebar when xmark is clicked
+        $('.fa-xmark').click(function() {
+            $('.sidebar').removeClass('active');
+            $('.fa-xmark').hide();  // Ensure the xmark is hidden when sidebar is closed
+            $('.black').removeClass('active');
+            $('body').removeClass('stop-scroll');
+        });
 });
-
-
-// Sidebar functionality for show and hide
-const sidebar = document.querySelector(".sidebar");
-const cross = document.querySelector(".fa-xmark");
-const black = document.querySelector(".black");
-const sidebtn = document.querySelector(".nav-1");
-
-// Initially hide the 'xmark' or close button
-cross.style.display = 'none';
-
-// Event listener to open the sidebar
-sidebtn.addEventListener("click", () => {
-    sidebar.classList.add("active");
-    cross.style.display = 'block'; 
-    black.classList.add("active");
-    document.body.style.overflow = 'hidden'; 
-});
-
-// Event listener to close the sidebar
-cross.addEventListener("click", () => {
-    sidebar.classList.remove("active");
-    cross.style.display = 'none'; 
-    black.classList.remove("active");
-    document.body.style.overflow = ''; 
 });

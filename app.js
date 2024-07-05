@@ -1,144 +1,44 @@
-// Query selectors for slider control buttons
-const leftBtn = document.querySelector(".l-btn");
-const rightBtn = document.querySelector(".r-btn");
+$(document).ready(function() {
+    // Explicitly hide the xmark when the document is ready
+    $('.fa-xmark').hide();
 
-// Add event listener for right button click to scroll product slides to the right
-rightBtn.addEventListener("click", function(event) {
-    const content = document.querySelector(".product-slide");
-    content.scrollLeft += 1100; 
-    event.preventDefault(); 
-});
-
-// Add event listener for left button click to scroll product slides to the left
-leftBtn.addEventListener("click", function(event) {
-    const content = document.querySelector(".product-slide");
-    content.scrollLeft -= 1100; 
-    event.preventDefault(); 
-});
-
-// Additional buttons for other sets of product slides
-const leftBtn1 = document.querySelector(".btn-1b");
-const rightBtn1 = document.querySelector(".btn-1a");
-
-// Handling the right scroll for the second set of product slides
-rightBtn1.addEventListener("click", function(event) {
-    const content = document.querySelector(".product-slide-1");
-    content.scrollLeft += 1100;
-    event.preventDefault();
-});
-
-// Handling the left scroll for the second set of product slides
-leftBtn1.addEventListener("click", function(event) {
-    const content = document.querySelector(".product-slide-1");
-    content.scrollLeft -= 1100;
-    event.preventDefault();
-});
-
-// Buttons for the third set of product slides
-const leftBtn2 = document.querySelector(".btn-1c");
-const rightBtn2 = document.querySelector(".btn-1d");
-
-// Right scroll for the third set of product slides
-rightBtn2.addEventListener("click", function(event) {
-    const content = document.querySelector(".product-slide-2");
-    content.scrollLeft += 1100;
-    event.preventDefault();
-});
-
-// Left scroll for the third set of product slides
-leftBtn2.addEventListener("click", function(event) {
-    const content = document.querySelector(".product-slide-2");
-    content.scrollLeft -= 1100;
-    event.preventDefault();
-});
-
-// 'Back to top' button functionality
-const backtop = document.querySelector(".backtop");
-backtop.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth" 
+    // Sidebar toggle functionality
+    $('.nav-1 div').click(function() {
+        $('.sidebar').toggleClass('active');
+        $('.fa-xmark').toggle(); // Toggle visibility of the xmark
+        $('.black').toggleClass('active');
+        $('body').toggleClass('stop-scroll');
     });
-});
 
-// Sidebar functionality for show and hide
-const sidebar = document.querySelector(".sidebar");
-const cross = document.querySelector(".fa-xmark");
-const black = document.querySelector(".black");
-const sidebtn = document.querySelector(".nav-1");
-
-// Initially hide the 'xmark' or close button
-cross.style.display = 'none';
-
-// Event listener to open the sidebar
-sidebtn.addEventListener("click", () => {
-    sidebar.classList.add("active");
-    cross.style.display = 'block'; 
-    black.classList.add("active");
-    document.body.style.overflow = 'hidden'; 
-});
-
-// Event listener to close the sidebar
-cross.addEventListener("click", () => {
-    sidebar.classList.remove("active");
-    cross.style.display = 'none'; 
-    black.classList.remove("active");
-    document.body.style.overflow = ''; 
-});
-
-// Handling user menu visibility toggle
-document.addEventListener('DOMContentLoaded', function() {
-    const signInButton = document.querySelector('.ac');  
-    const triangleButton = document.querySelector('.triangle');  
-    const userMenu = document.querySelector('.user-menu');
-    const blackOverlay = document.querySelector('.black');
-
-    // Function to toggle the visibility of the user menu
-    function toggleUserMenu() {
-        userMenu.classList.toggle('active');
-        triangleButton.classList.toggle('active');
-        blackOverlay.classList.toggle('active-1');
-        document.body.classList.toggle('stop-scroll');
-    }
-
-    // Check if elements exist to avoid errors
-    if (signInButton && userMenu && triangleButton && blackOverlay) {
-        signInButton.addEventListener('click', toggleUserMenu);
-        triangleButton.addEventListener('click', toggleUserMenu);
-    } else {
-        console.error('One or more interactive elements are missing!');
-    }
-
-    // Add event listener for clicking outside the user menu to close it
-    document.addEventListener('click', function(event) {
-        if (!userMenu.contains(event.target) && !signInButton.contains(event.target) && !triangleButton.contains(event.target)) {
-            userMenu.classList.remove('active');
-            triangleButton.classList.remove('active');
-            blackOverlay.classList.remove('active-1');
-            document.body.classList.remove('stop-scroll');
-        }
+    // Close sidebar when xmark is clicked
+    $('.fa-xmark').click(function() {
+        $('.sidebar').removeClass('active');
+        $('.fa-xmark').hide();  // Ensure the xmark is hidden when sidebar is closed
+        $('.black').removeClass('active');
+        $('body').removeClass('stop-scroll');
     });
-});
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Select all <li> elements
-    const listItems = document.querySelectorAll('li');
-
-    // Set tabindex="0" for each <li> element
-    listItems.forEach(item => {
-        item.setAttribute('tabindex', '0');
+    // Back to top functionality
+    $('.backtop').click(function() {
+        $('html, body').animate({ scrollTop: 0 }, 'smooth');
     });
-});
 
-// Add keydown event listener to all elements that have tabindex="0"
-document.addEventListener('DOMContentLoaded', () => {
-    const focusableElements = document.querySelectorAll('[tabindex="0"]');
+    // Product slides
+    $('.r-btn').click(function(event) {
+        event.preventDefault();
+        $(this).siblings('.product-slide').animate({ scrollLeft: '+=1100' }, 'smooth');
+    });
 
-    focusableElements.forEach(elem => {
-        elem.addEventListener('keydown', function(event) {
-            if (event.key === "Enter" || event.keyCode === 13) {
-                this.click();
-            }
-        });
+    $('.l-btn').click(function(event) {
+        event.preventDefault();
+        $(this).siblings('.product-slide').animate({ scrollLeft: '-=1100' }, 'smooth');
+    });
+
+    // User menu toggle
+    $('.ac').click(function() {
+        $('.user-menu').toggleClass('active');
+        $('.triangle').toggleClass('active');
+        $('.black').toggleClass('active-1');
+        $('body').toggleClass('stop-scroll');
     });
 });

@@ -1,50 +1,34 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const thumbnails = document.querySelectorAll('.thumbnail');
-    const mainImage = document.getElementById('main-image');
+$(document).ready(function() {
+    // Thumbnail click event
+    $('.thumbnail').click(function() {
+        $('.thumbnail').removeClass('active');
+        $(this).addClass('active');
+        $('#main-image').attr('src', $(this).data('main-image-src'));
+    });
 
-    thumbnails.forEach(thumbnail => {
-        thumbnail.addEventListener('click', () => {
-            thumbnails.forEach(thumb => thumb.classList.remove('active'));
-            thumbnail.classList.add('active');
-            mainImage.src = thumbnail.getAttribute('data-main-image-src');
+    // Back to top functionality
+    $('.backtop').click(function() {
+        $('html, body').animate({ scrollTop: 0 }, 'smooth');
+    });
+
+    $(document).ready(function() {
+        // Explicitly hide the xmark when the document is ready
+        $('.fa-xmark').hide();
+    
+        // Sidebar toggle functionality
+        $('.nav-1 div').click(function() {
+            $('.sidebar').toggleClass('active');
+            $('.fa-xmark').toggle(); // Toggle visibility of the xmark
+            $('.black').toggleClass('active');
+            $('body').toggleClass('stop-scroll');
         });
-    });
+    
+        // Close sidebar when xmark is clicked
+        $('.fa-xmark').click(function() {
+            $('.sidebar').removeClass('active');
+            $('.fa-xmark').hide();  // Ensure the xmark is hidden when sidebar is closed
+            $('.black').removeClass('active');
+            $('body').removeClass('stop-scroll');
+        });
 });
-
-
-
-
-
-const backtop = document.querySelector(".backtop");
-backtop.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth" 
-    });
-});
-
-
-// Sidebar functionality for show and hide
-const sidebar = document.querySelector(".sidebar");
-const cross = document.querySelector(".fa-xmark");
-const black = document.querySelector(".black");
-const sidebtn = document.querySelector(".nav-1");
-
-// Initially hide the 'xmark' or close button
-cross.style.display = 'none';
-
-// Event listener to open the sidebar
-sidebtn.addEventListener("click", () => {
-    sidebar.classList.add("active");
-    cross.style.display = 'block'; 
-    black.classList.add("active");
-    document.body.style.overflow = 'hidden'; 
-});
-
-// Event listener to close the sidebar
-cross.addEventListener("click", () => {
-    sidebar.classList.remove("active");
-    cross.style.display = 'none'; 
-    black.classList.remove("active");
-    document.body.style.overflow = ''; 
 });

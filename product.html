@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Apple Watch Series 9</title>
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/x-icon" href="images/amazon.svg">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="product.js"></script>
+
 </head>
 <body class="product">
 
@@ -70,10 +72,10 @@
             <div class="separator"></div>
         </div>
     </div>
+    <div class="black"></div>
     <i class="fa-solid fa-xmark" id="close-sidebar"></i>
     <div class="triangle"><i class="fa-solid fa-triangle"></i></div>
-
-
+    
     <header>
         <div class="header">
             <div class="flex logo">
@@ -212,11 +214,11 @@
 
         <div class="product-summary">
             <div class="exchange-offer">
-                <span style="color: #1C1C1C;">With Exchange</span><br>
+                <span style="color: #1C1C1C;">With Exchange</span><input type="radio" class="radio" style="left: 72px"><br>
                 Up to ₹30,800.00 off
             </div>
             <div class="price">
-                <span style="font-size: 16px; font-weight: bold;">Without Exchange</span><br>
+                <span style="font-size: 16px; font-weight: bold;">Without Exchange</span><input type="radio" class="radio"><br>
                 <p style="color: #B12704;font-size: medium;">₹54,900.00</p>
             </div><br>
             <div class="delivery">
@@ -386,9 +388,6 @@
         </div>
     </div>
 
-
-    
-
     <section class="footer">
         <div class="backtop">
             <span tabindex="0">Back to Top</span>
@@ -452,7 +451,5 @@
             <span><a href="https://github.com/SamayJain10">Amazon Clone by Samay Jain</a></span>
         </div>
     </section>
-
-    <script src="product.js"></script>
 </body>
 </html>
