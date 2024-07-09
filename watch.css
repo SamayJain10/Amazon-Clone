@@ -1,0 +1,100 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body::before {
+    display: block;
+    content: "";
+    height: 60px;
+  }
+
+.btn {
+  padding: 10px 20px; 
+  background-color: blue; 
+  color: white; 
+  border: none; 
+  border-radius: 30px; 
+  font-size: 16px; /* Text size */
+  font-family: Arial, sans-serif; /* Font style */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Optional shadow */
+  cursor: pointer; 
+  margin-bottom: 20px;
+}
+
+.btn:hover {
+  background-color: darkblue; 
+}
+
+.overview-1{
+  width: 50%;
+  align-self: center;
+  
+}
+
+.card{
+  background-color: black;
+}
+
+.card-text{
+  font-size: large;
+}
+
+.display{
+  text-align: right;
+}
+
+.sidewatch{
+  width: 50%;
+}
+
+.homepod{
+  width: 38%;
+  
+}
+
+.info{
+  width: 100%;
+}
+
+.footer{
+    font-size: 13px;
+    line-height: 1.5;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    font-family: "SF Pro Text", "Myriad Set Pro", "SF Pro Icons", "Apple Legacy Chevron", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
+
+.specs-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.spec-group {
+  flex: 1; 
+  padding: 0 85px; 
+}
+
+.spec-group p {
+  margin: 5px 0; 
+  font-size: 16px; 
+}
+
+.specs{
+  margin-top: -30px;
+}
+
+.image-content {
+  flex: 0 0 auto; 
+}
+
+.text-content {
+  flex: 1; 
+}
+  
+  @media (min-width: 768px) {
+    .news-input {
+      width: 50%;
+    }
+  }
+  
